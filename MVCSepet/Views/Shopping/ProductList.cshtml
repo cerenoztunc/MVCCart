@@ -1,0 +1,32 @@
+﻿@model ShoppingVM
+@{
+    ViewBag.Title = "ProductList";
+}
+
+<div class="jumbotron">
+    @TempData["mesaj"]
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Urun Ismi</th>
+            <th>Urun Fiyatı</th>
+            <th>Urun Stok</th>
+            <th>@Html.ActionLink("SepetSayfasi","SepetSayfasi",null,new {@class="btn btn-success"})</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product item in Model.Products)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.UnitsInStock</td>
+                <td>@Html.ActionLink("Sepete at", "AddToCart", new { id = item.ProductID }, new { @class = "btn btn-primary" })</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
